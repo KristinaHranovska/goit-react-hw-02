@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Options = ({ onClickFeedback }) => {
+const Options = ({ onClickFeedback, resetFeedback, resetButton }) => {
   return (
     <ul>
       <li>
@@ -12,6 +12,11 @@ const Options = ({ onClickFeedback }) => {
       <li>
         <button onClick={() => onClickFeedback("bad")}>Bad</button>
       </li>
+      {resetFeedback >= 1 && (
+        <li>
+          <button onClick={resetButton}>Reset</button>
+        </li>
+      )}
     </ul>
   );
 };
@@ -19,5 +24,7 @@ const Options = ({ onClickFeedback }) => {
 export default Options;
 
 Options.protoType = {
-  feedback: PropTypes.func,
+  onClickFeedback: PropTypes.func,
+  resetFeedback: PropTypes.bool,
+  resetButton: PropTypes.func,
 };
