@@ -1,13 +1,23 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
-const Options = () => {
+const Options = ({ onClickFeedback }) => {
   return (
-    <>
-      <button>Good</button>
-      <button>Neutral</button>
-      <button>Bad</button>
-    </>
+    <ul>
+      <li>
+        <button onClick={() => onClickFeedback("good")}>Good</button>
+      </li>
+      <li>
+        <button onClick={() => onClickFeedback("neutral")}>Neutral</button>
+      </li>
+      <li>
+        <button onClick={() => onClickFeedback("bad")}>Bad</button>
+      </li>
+    </ul>
   );
 };
 
 export default Options;
+
+Options.protoType = {
+  feedback: PropTypes.func,
+};

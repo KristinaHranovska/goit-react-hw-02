@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
 
-const Feedback = ({ goodMark, neutralMark, badMark }) => {
+const Feedback = ({ feedbackObj }) => {
+  const { good, neutral, bad } = feedbackObj;
+  const totalFeedback = good + neutral + bad;
+
   return (
     <>
-      <p>Good: {goodMark}</p>
-      <p>Neutral: {neutralMark}</p>
-      <p>Bad: {badMark}</p>
+      {totalFeedback > 0 ? (
+        <>
+          <p>Good: {good}</p>
+          <p>Neutral: {neutral}</p>
+          <p>Bad: {bad}</p>
+        </>
+      ) : (
+        <p>No feedback yet</p>
+      )}
     </>
   );
 };
@@ -13,7 +22,5 @@ const Feedback = ({ goodMark, neutralMark, badMark }) => {
 export default Feedback;
 
 Feedback.protoType = {
-  goodMark: PropTypes.number,
-  neutralMark: PropTypes.number,
-  badMark: PropTypes.number,
+  feedbackObj: PropTypes.objectOf(PropTypes.number),
 };
