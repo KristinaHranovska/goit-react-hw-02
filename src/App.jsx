@@ -1,5 +1,6 @@
 import Description from "./components/Description/Description";
 import Feedback from "./components/Feedback/Feedback";
+import Notification from "./components/Notification/Notification";
 import Options from "./components/Options/Options";
 
 import { useState } from "react";
@@ -13,6 +14,7 @@ function App() {
 
   // values - obj typeRewiews
   const [values, setValues] = useState(typeRewiews);
+  const totalFeedback = values.good + values.neutral + values.bad;
 
   const updateFeedback = (feedbackType) => {
     setValues({
@@ -27,7 +29,10 @@ function App() {
       <Options
         onClickFeedback={(feedbackType) => updateFeedback(feedbackType)}
       />
-      <Feedback feedbackObj={values} />
+      {totalFeedback >= 1 && (
+        <Feedback feedbackObj={values} feedbackTotal={totalFeedback} />
+      )}
+      {totalFeedback < 1 && <Notification />}
     </>
   );
 }
