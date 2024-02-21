@@ -1,15 +1,20 @@
 import PropTypes from "prop-types";
+import css from "./Feedback.module.css";
 
 const Feedback = ({ feedbackObj, feedbackTotal, feedbackPositive }) => {
   const { good, neutral, bad } = feedbackObj;
 
   return (
     <>
-      <p>❤️ Good: {good}</p>
-      <p>😒 Neutral: {neutral}</p>
-      <p>😢 Bad: {bad}</p>
-      <p>🤩 Total: {feedbackTotal}</p>
-      <p>💕 Positive: {feedbackPositive}%</p>
+      <div className={css.divContainer}>
+        <p className={css.feedbackParagraf}>❤️ Good: {good}</p>
+        <p className={css.feedbackParagraf}>😒 Neutral: {neutral}</p>
+        <p className={css.feedbackParagraf}>😢 Bad: {bad}</p>
+      </div>
+      <div className={css.divContainer}>
+        <p className={css.feedbackParagraf}>🤩 Total: {feedbackTotal}</p>
+        <p className={css.feedbackParagraf}>💕 Positive: {feedbackPositive}%</p>
+      </div>
     </>
   );
 };

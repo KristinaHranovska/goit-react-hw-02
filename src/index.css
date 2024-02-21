@@ -1,3 +1,11 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #BFBABA;
+    color: #1B1B1B;
+}
+
 button {
     cursor: pointer;
 }
